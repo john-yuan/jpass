@@ -1,5 +1,10 @@
 # JPASS
 
+[![npm version](https://img.shields.io/npm/v/jpass.svg)](https://www.npmjs.com/package/jpass)
+[![build status](https://travis-ci.org/john-yuan/querystring.js.svg?branch=master)](https://travis-ci.org/john-yuan/jpass)
+[![install size](https://packagephobia.now.sh/badge?p=jpass)](https://packagephobia.now.sh/result?p=jpass)
+[![npm downloads](https://img.shields.io/npm/dm/jpass.svg)](http://npm-stat.com/charts.html?package=jpass)
+
 一个适用于浏览器端和 Node.js 的 RSA 库，主要基于 Tom Wu 的 [RSA and ECC in JavaScript][jsbn] 代码进行封装。支持的功能有：
 
 * 生成 RSA key；
