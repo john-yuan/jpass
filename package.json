@@ -1,6 +1,6 @@
 {
   "name": "jpass",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "A library used to encrypt text with the RSA public information in the browser.",
   "main": "dist/jpass.cmd.js",
   "scripts": {
