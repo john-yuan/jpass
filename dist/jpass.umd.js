@@ -2148,7 +2148,7 @@ var JPASS = {
   str2bytes: str2bytes,
   bytes2str: bytes2str,
   b64toBA: b64toBA,
-  version: '0.0.1-alpha'
+  version: '0.0.1-alpha.1'
 };
 
 return JPASS;
