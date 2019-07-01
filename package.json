@@ -1,0 +1,31 @@
+{
+  "name": "jpass",
+  "version": "0.0.1-alpha",
+  "description": "A library used to encrypt text with the RSA public information in the browser.",
+  "main": "dist/jpass.cmd.js",
+  "scripts": {
+    "build": "node build/build.js",
+    "mocha": "mocha",
+    "test": "npm run build && npm run mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john-yuan/jpass.git"
+  },
+  "keywords": [
+    "rsa",
+    "encrypt",
+    "password"
+  ],
+  "author": "JOHN YUAN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/john-yuan/jpass/issues"
+  },
+  "homepage": "https://github.com/john-yuan/jpass#readme",
+  "devDependencies": {
+    "ejs": "^2.6.2",
+    "fs-extra": "^8.1.0",
+    "mocha": "^6.1.4"
+  }
+}
