@@ -1,7 +1,7 @@
 # JPASS
 
 [![npm version](https://img.shields.io/npm/v/jpass.svg)](https://www.npmjs.com/package/jpass)
-[![build status](https://travis-ci.org/john-yuan/querystring.js.svg?branch=master)](https://travis-ci.org/john-yuan/jpass)
+[![Build Status](https://travis-ci.org/john-yuan/jpass.svg?branch=master)](https://travis-ci.org/john-yuan/jpass)
 [![install size](https://packagephobia.now.sh/badge?p=jpass)](https://packagephobia.now.sh/result?p=jpass)
 [![npm downloads](https://img.shields.io/npm/dm/jpass.svg)](http://npm-stat.com/charts.html?package=jpass)
 
