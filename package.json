@@ -1,10 +1,11 @@
 {
   "name": "jpass",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "description": "A library used to encrypt text with the RSA public information in the browser.",
-  "main": "dist/jpass.cmd.js",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "build": "node build/build.js",
+    "build": "node build/build.js && tsc",
     "mocha": "mocha",
     "test": "npm run build && npm run mocha"
   },
@@ -26,6 +27,7 @@
   "devDependencies": {
     "ejs": "^2.6.2",
     "fs-extra": "^8.1.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "typescript": "^4.0.3"
   }
 }

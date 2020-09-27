@@ -1922,7 +1922,7 @@ function urlModeDecrypt(rsaKey, text) {
 /**
  * @class
  */
-function RSA() {
+function JPass() {
   this.key = null;
 }
 
@@ -1930,9 +1930,9 @@ function RSA() {
  * Generate a new RSAKey. Call this method will reset the key.
  *
  * @param {number} size The key size.
- * @param {number} [exponent=65537] (Optional) The public exponet. Default is `65537`.
+ * @param {number} [exponent=65537] (Optional) The public exponent. Default is `65537`.
  */
-RSA.prototype.generate = function (size, exponent) {
+JPass.prototype.generate = function (size, exponent) {
   var key = new RSAKey();
 
   size = parseInt(size, 10);
@@ -1959,9 +1959,9 @@ RSA.prototype.generate = function (size, exponent) {
 /**
  * Serialize the current RSAKey.
  *
- * @returns {Object.<string, string>} Returns an object containing the key details.
+ * @returns {JPassSerializeObject} Returns an object containing the key details.
  */
-RSA.prototype.serialize = function () {
+JPass.prototype.serialize = function () {
   var key = this.key || {};
   var object = {};
 
@@ -1980,9 +1980,9 @@ RSA.prototype.serialize = function () {
 /**
  * Parse the object to a RSAKey. Call this method will reset the key.
  *
- * @param {Object.<string, string>} object An object containing the key details.
+ * @param {JPassSerializeObject} object An object containing the key details.
  */
-RSA.prototype.parse = function (object) {
+JPass.prototype.parse = function (object) {
   var key = new RSAKey();
 
   key.n = object.n ? parseBigInt(b64tohex(object.n), 16) : null;
@@ -2000,9 +2000,9 @@ RSA.prototype.parse = function (object) {
 /**
  * Get the public information fo the RSAKey.
  *
- * @returns {RSAPublicInformation} Returns an object containg the RSA public information.
+ * @returns {JPassPublicObject} Returns an object containing the RSA public information.
  */
-RSA.prototype.getPublic = function () {
+JPass.prototype.getPublic = function () {
   var object = this.serialize();
 
   return {
@@ -2017,7 +2017,7 @@ RSA.prototype.getPublic = function () {
  * @param {string} modulus The base64 encoded RSA modulus.
  * @param {string} exponent The base64 encoded RSA public exponent.
  */
-RSA.prototype.setPublic = function (modulus, exponent) {
+JPass.prototype.setPublic = function (modulus, exponent) {
   this.parse({
     n: modulus,
     e: exponent
@@ -2027,9 +2027,9 @@ RSA.prototype.setPublic = function (modulus, exponent) {
 /**
  * Returns the public information when the RSA instance is passed to `JSON.stringify`.
  *
- * @returns {RSAPublicInformation} Returns an object containg the RSA public information.
+ * @returns {JPassPublicObject} Returns an object containing the RSA public information.
  */
-RSA.prototype.toJSON = function () {
+JPass.prototype.toJSON = function () {
   return this.getPublic();
 };
 
@@ -2049,7 +2049,7 @@ RSA.prototype.toJSON = function () {
  * @throws {Error} Throws error on failed to encrypt the text.
  * @returns {string} Returns the encrypted data, which is base64 encoded.
  */
-RSA.prototype.encrypt = function (mode, text) {
+JPass.prototype.encrypt = function (mode, text) {
   var str = text;
   var key = this.key;
 
@@ -2083,7 +2083,7 @@ RSA.prototype.encrypt = function (mode, text) {
  * @throws {Error} Throws error on failed to decrypt the text.
  * @returns {string} Returns the decrypted text.
  */
-RSA.prototype.decrypt = function (mode, text) {
+JPass.prototype.decrypt = function (mode, text) {
   var str = text;
   var key = this.key;
 
@@ -2110,28 +2110,23 @@ RSA.prototype.decrypt = function (mode, text) {
 };
 
 /**
- * @typedef {Object.<string, string>} RSAPublicInformation
+ * @typedef {Object.<string, string>} JPassPublicObject
  * @property {string} modulus The base64 encoded RSA modulus.
  * @property {string} exponent The base64 encoded RSA public exponent.
+ */
+
+/**
+ * @typedef {Object.<string, string>} JPassSerializeObject
+ * @property {string} n
+ * @property {string} e
+ * @property {string} d
  */
 /**
  * Exports
  */
 var JPASS = {
-  RSA: RSA,
-  RSAKey: RSAKey,
-  Classic: Classic,
-  NullExp: NullExp,
-  Arcfour: Arcfour,
-  SecureRandom: SecureRandom,
-  BigInteger: BigInteger,
-  parseBigInt: parseBigInt,
-  hex2b64: hex2b64,
-  b64tohex: b64tohex,
-  str2bytes: str2bytes,
-  bytes2str: bytes2str,
-  b64toBA: b64toBA,
-  version: '0.0.1-alpha.2'
+  JPass: JPass,
+  version: '0.0.1-alpha.3'
 };
 
 module.exports = JPASS;

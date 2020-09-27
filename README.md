@@ -16,27 +16,26 @@
 ## 示例
 
 ```js
-var JPASS = require('jpass');
-var RSA = JPASS.RSA;
+var JPass = require('jpass').JPass;
 
 // 1. 加密与解密：
 
-var rsa = new RSA();
+var jpass = new JPass();
 
 // 生成秘钥，长度为 1024（长度越长越安全，但是耗时也越长）
-rsa.generate(1024);
+jpass.generate(1024);
 
 // 需要加密的文本
 var text = 'Secret is 秘密 ㊙️';
 
 // 使用 `BYTE_MODE` 进行加密（加密后的数据是经过 base64 编码的）
-var encrypted1 = rsa.encrypt('BYTE_MODE', text);
+var encrypted1 = jpass.encrypt('BYTE_MODE', text);
 // 使用 `URL_MODE` 进行加密（加密后的数据是经过 base64 编码的）
-var encrypted2 = rsa.encrypt('URL_MODE', text);
+var encrypted2 = jpass.encrypt('URL_MODE', text);
 
 // 解密
-var decrypted1 = rsa.decrypt('BYTE_MODE', encrypted1);
-var decrypted2 = rsa.decrypt('URL_MODE', encrypted2);
+var decrypted1 = jpass.decrypt('BYTE_MODE', encrypted1);
+var decrypted2 = jpass.decrypt('URL_MODE', encrypted2);
 
 console.log(decrypted1 === text); // true
 console.log(decrypted2 === text); // true
@@ -44,15 +43,15 @@ console.log(decrypted2 === text); // true
 // 2. 序列化与反序列化
 
 // 序列化：返回一个 Object，可转换为 JSON 字符串进行保存
-var object = rsa.serialize();
+var object = jpass.serialize();
 
 // 反序列化
-var rsa2 = new RSA();
-rsa2.parse(object);
+var jpass2 = new JPass();
+jpass2.parse(object);
 
-// 使用反序列化后的 RSA 进行解密
-var decrypted3 = rsa2.decrypt('BYTE_MODE', encrypted1);
-var decrypted4 = rsa2.decrypt('URL_MODE', encrypted2);
+// 使用反序列化后的 JPass 进行解密
+var decrypted3 = jpass2.decrypt('BYTE_MODE', encrypted1);
+var decrypted4 = jpass2.decrypt('URL_MODE', encrypted2);
 
 console.log(decrypted3 === text); // true
 console.log(decrypted4 === text); // true
@@ -60,22 +59,22 @@ console.log(decrypted4 === text); // true
 // 3. 获取公钥信息和使用公钥信息加密
 
 // 获取公钥信息
-var details = rsa2.getPublic();
+var details = jpass2.getPublic();
 var modulus = details.modulus; // base64 编码的 modulus
 var exponent = details.exponent; // base64 编码的 private exponent
 
-var rsa3 = new RSA();
+var jpass3 = new JPass();
 
 // 设置公钥信息
-rsa3.setPublic(modulus, exponent);
+jpass3.setPublic(modulus, exponent);
 
 // 加密
-var encrypted3 = rsa3.encrypt('BYTE_MODE', text);
-var encrypted4 = rsa3.encrypt('URL_MODE', text);
+var encrypted3 = jpass3.encrypt('BYTE_MODE', text);
+var encrypted4 = jpass3.encrypt('URL_MODE', text);
 
 // 解密公钥加密的数据
-var decrypted5 = rsa2.decrypt('BYTE_MODE', encrypted3);
-var decrypted6 = rsa2.decrypt('URL_MODE', encrypted4);
+var decrypted5 = jpass2.decrypt('BYTE_MODE', encrypted3);
+var decrypted6 = jpass2.decrypt('URL_MODE', encrypted4);
 
 console.log(decrypted5 === text); // true
 console.log(decrypted6 === text); // true

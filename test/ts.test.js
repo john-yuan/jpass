@@ -1,4 +1,4 @@
-var jpass = require('../dist/jpass.umd');
+var jpass = require('../index');
 var JPass = jpass.JPass;
 var assert = require('assert');
 
@@ -24,7 +24,7 @@ function test(mode, text) {
     return decrypted;
 }
 
-describe('umd: encrypt and decrypt', function () {
+describe('ts: encrypt and decrypt', function () {
     it('URL_MODE ascii', function () {
         var i = 50;
         while (i--) {

@@ -1,25 +1,25 @@
 var jpass = require('../dist/jpass.cmd');
-var RSA = jpass.RSA;
+var JPass = jpass.JPass;
 var assert = require('assert');
 
 function test(mode, text) {
-    var rsa = new RSA();
+    var j = new JPass();
 
-    rsa.generate(512);
+    j.generate(512);
 
-    var object = rsa.serialize();
-    var details = rsa.getPublic();
+    var object = j.serialize();
+    var details = j.getPublic();
 
-    rsa = null;
+    j = null;
 
-    var rsa1 = new RSA();
-    var rsa2 = new RSA();
+    var j1 = new JPass();
+    var j2 = new JPass();
 
-    rsa1.setPublic(details.modulus, details.exponent);
-    rsa2.parse(object);
+    j1.setPublic(details.modulus, details.exponent);
+    j2.parse(object);
 
-    var encrypted = rsa1.encrypt(mode, text);
-    var decrypted = rsa2.decrypt(mode, encrypted);
+    var encrypted = j1.encrypt(mode, text);
+    var decrypted = j2.decrypt(mode, encrypted);
 
     return decrypted;
 }
